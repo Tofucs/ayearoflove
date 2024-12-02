@@ -23,26 +23,39 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* Full height of parent (body/html) */
+  width: 100%;
+  /* Full width of parent (body/html) */
+}
+
+body,
+html {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  height: 100%;
+  /* Full height for the viewport */
+  width: 100%;
+  /* Full width for the viewport */
+  overflow: hidden;
+  /* Prevent default scrolling */
 }
 
-app {
-  position: relative;
-  display: block;
-
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-calendarPuzzle {
-  padding-left: 65%;
-  padding-right: 65%;
-
-  position: absolute;
-}
 
 .neighboring-date {
   color: #aaa;

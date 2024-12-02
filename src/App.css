@@ -1,8 +1,18 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height: 100vh;
+  /* Full viewport height */
+  width: 100vw;
+  /* Full viewport width */
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+  display: flex;
+  /* Enable flex for centering content */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* Prevent scrolling */
 }
 
 .logo {
@@ -38,7 +48,7 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 0;
 }
 
 .react-calendar__tile--neighboringMonth {
@@ -52,14 +62,10 @@
   color: #888;
 }
 
-app {
-  position: relative;
-  display: block;
-}
-
-calendarPuzzle {
-  padding-left: 65%;
-  padding-right: 65%;
-
-  position: absolute;
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
