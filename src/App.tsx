@@ -73,19 +73,19 @@ const App: React.FC = () => {
             >
               Happy 1 year Alma!
             </motion.h1>
-            <motion.img
-              src="/images/orangecat.webp"
+            {/* <motion.img
+              src="./orangecat.webp"
               alt="Cat Sprite"
               className="cat-sprite"
               initial={{ y: -50, scale: 0 }}
-              animate={{ y: -80, x: 200, scale: 1 }}
+              animate={{ y: -80, x: -200, scale: 1 }}
               transition={{
                 type: 'spring',
                 stiffness: 150,
                 damping: 10,
               }}
               exit={{ y: -300, opacity: 0 }}
-            />
+            /> */}
           </motion.div>
         )}
       </AnimatePresence>
