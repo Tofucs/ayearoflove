@@ -49,93 +49,93 @@ const Gallery: React.FC = () => {
       {
         label: 'December 2023',
         pictures: [
-          { src: './images/dec1.jpg', caption: 'Our first date in Peddlers after becoming official. Your so freaking cute <3' },
-          { src: './images/dec2.jpg', caption: 'Asking strangers to take photos was so awkward at this time. We were really young lol' }
+          { src: './public/images/dec1.jpg', caption: 'Our first date in Peddlers after becoming official. Your so freaking cute <3' },
+          { src: './public/images/dec2.jpg', caption: 'Asking strangers to take photos was so awkward at this time. We were really young lol' }
         ],
       },
 
       {
         label: 'January 2024',
         pictures: [
-          { src: './images/jan1.jpg', caption: 'I honestly loved hanging out at random places over winter break' },
-          { src: './images/jan2.jpg', caption: 'You being iconic and cute again :33' }
+          { src: './public/images/jan1.jpg', caption: 'I honestly loved hanging out at random places over winter break' },
+          { src: './public/images/jan2.jpg', caption: 'You being iconic and cute again :33' }
         ],
       },
       {
         label: 'Febuary 2024',
         pictures: [
-          { src: './images/feb1.jpg', caption: 'Back when I didnt know this resturant was hella overpriced... still was a really fun date' },
-          { src: './images/feb2.jpg', caption: 'You in your fortnite era bruh. On our valentines day date...' },
-          { src: './images/feb3.jpg', caption: 'Dont care your so frigging cute <33333' }
+          { src: './public/images/feb1.jpg', caption: 'Back when I didnt know this resturant was hella overpriced... still was a really fun date' },
+          { src: './public/images/feb2.jpg', caption: 'You in your fortnite era bruh. On our valentines day date...' },
+          { src: './public/images/feb3.jpg', caption: 'Dont care your so frigging cute <33333' }
         ],
       },
       {
         label: 'March 2024',
         pictures: [
-          { src: './images/march1.jpg', caption: 'Lowkey we are slaying here peak fashion?' },
-          { src: './images/march2.jpg', caption: 'This was the month I realized we fit so well together' },
-          { src: './images/march3.jpg', caption: 'Bruh i have like one face for photos. Ur so pretty tho :3' }
+          { src: './public/images/march1.jpg', caption: 'Lowkey we are slaying here peak fashion?' },
+          { src: './public/images/march2.jpg', caption: 'This was the month I realized we fit so well together' },
+          { src: './public/images/march3.jpg', caption: 'Bruh i have like one face for photos. Ur so pretty tho :3' }
         ],
       },
       {
         label: 'April 2024',
         pictures: [
-          { src: './images/april1.jpg', caption: 'First time I saw an eclipse with friends! and you my love' },
-          { src: './images/april2.jpg', caption: 'We revisited the overpriced mid mexican resturant... its ok cause UR HOT AF' }
+          { src: './public/images/april1.jpg', caption: 'First time I saw an eclipse with friends! and you my love' },
+          { src: './public/images/april2.jpg', caption: 'We revisited the overpriced mid mexican resturant... its ok cause UR HOT AF' }
         ],
       },
       {
         label: 'May 2024',
         pictures: [
-          { src: './images/may1.jpg', caption: 'End of school. OMG I WAS SO EXCITED FOR SUMMER' },
-          { src: './images/may2.jpg', caption: 'Did I mention you are so cute' },
-          { src: './images/may3.jpg', caption: 'First time I used a photobooth actually, and my favorite time' },
-          { src: './images/may4.jpg', caption: 'Aquarium Date!!!! Like high key W date lol sry for being super horny' }
+          { src: './public/images/may1.jpg', caption: 'End of school. OMG I WAS SO EXCITED FOR SUMMER' },
+          { src: './public/images/may2.jpg', caption: 'Did I mention you are so cute' },
+          { src: './public/images/may3.jpg', caption: 'First time I used a photobooth actually, and my favorite time' },
+          { src: './public/images/may4.jpg', caption: 'Aquarium Date!!!! Like high key W date lol sry for being super horny' }
         ],
       },
       {
         label: 'June 2024',
         pictures: [
-          { src: './images/june1.jpg', caption: 'Never had so much fun at the beach and boardwalk <3' },
-          { src: './images/june2.jpg', caption: 'When we wolfed down so much food bruh in Doylestown' },
-          { src: './images/june3.jpg', caption: 'CUTEEEEEEEE <333' }
+          { src: './public/images/june1.jpg', caption: 'Never had so much fun at the beach and boardwalk <3' },
+          { src: './public/images/june2.jpg', caption: 'When we wolfed down so much food bruh in Doylestown' },
+          { src: './public/images/june3.jpg', caption: 'CUTEEEEEEEE <333' }
         ],
       },
       {
         label: 'July 2024',
         pictures: [
-          { src: './images/july1.jpg', caption: 'July 4th weekend :3. NOT SHOWING MY HAIRCUT PHOTOS' },
-          { src: './images/july2.jpg', caption: 'Another W beach trip we look so goood' }
+          { src: './public/images/july1.jpg', caption: 'July 4th weekend :3. NOT SHOWING MY HAIRCUT PHOTOS' },
+          { src: './public/images/july2.jpg', caption: 'Another W beach trip we look so goood' }
         ],
       },
       {
         label: 'August 2024',
         pictures: [
-          { src: './images/august1.jpg', caption: 'oh myyyyyy.... im ovulating' },
-          { src: './images/august2.jpg', caption: 'W DATE SPOOTT' },
-          { src: './images/august3.jpg', caption: 'These lights were so fun and the fair in general was so cool' },
-          { src: './images/august4.jpg', caption: 'We didnt take any photos of us together at the museum :(... you looked amazing tho. We should go again and pretend to know history again LOL' }
+          { src: './public/images/august1.jpg', caption: 'oh myyyyyy.... im ovulating' },
+          { src: './public/images/august2.jpg', caption: 'W DATE SPOOTT' },
+          { src: './public/images/august3.jpg', caption: 'These lights were so fun and the fair in general was so cool' },
+          { src: './public/images/august4.jpg', caption: 'We didnt take any photos of us together at the museum :(... you looked amazing tho. We should go again and pretend to know history again LOL' }
         ],
       },
       {
         label: 'September 2024',
         pictures: [
-          { src: './images/sep1.jpg', caption: 'Mewinggggg. Even though we were fighting a lot during this month, I was still so in love with you' },
-          { src: './images/sep2.jpg', caption: 'Texas Roadhouse :3 ur buns or their buns.... (ofc urs)' }
+          { src: './public/images/sep1.jpg', caption: 'Mewinggggg. Even though we were fighting a lot during this month, I was still so in love with you' },
+          { src: './public/images/sep2.jpg', caption: 'Texas Roadhouse :3 ur buns or their buns.... (ofc urs)' }
         ],
       },
       {
         label: 'October 2024',
         pictures: [
-          { src: './images/oct1.jpg', caption: 'Yea i remember yapping about leaving lambdas and pouring fucking chick-fil-a sauce every LOL. i love you' },
-          { src: './images/oct2.jpg', caption: 'I love you. Damn you slayyyyed' },
+          { src: './public/images/oct1.jpg', caption: 'Yea i remember yapping about leaving lambdas and pouring fucking chick-fil-a sauce every LOL. i love you' },
+          { src: './public/images/oct2.jpg', caption: 'I love you. Damn you slayyyyed' },
         ],
       },
       {
         label: 'November 2024',
         pictures: [
-          { src: './images/nov1.jpg', caption: 'We slayyyed. We gotta do more costumes tbh' },
-          { src: './images/nov2.jpg', caption: 'I loveee youuu. I cant wait to make more memories with you <3' },
+          { src: './public/images/nov1.jpg', caption: 'We slayyyed. We gotta do more costumes tbh' },
+          { src: './public/images/nov2.jpg', caption: 'I loveee youuu. I cant wait to make more memories with you <3' },
         ],
       },
       {
