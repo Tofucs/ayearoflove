@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: linear-gradient(to bottom, #7eceac, #3d634f);
+  background: linear-gradient(to bottom, #dde6e2, rgba(97, 142, 118, 0.783));
   /* Pink gradient */
   z-index: -1;
   /* Push the hearts to the back */
@@ -19,7 +19,8 @@
   height: 50px;
   background-color: rgba(255, 255, 255, 1);
   transform: rotate(-45deg);
-  animation: float 10s infinite ease-in;
+  animation: float 10s infinite forwards;
+  perspective: 1000px;
 }
 
 .heart:before,
@@ -47,12 +48,12 @@
 
 @keyframes float {
   0% {
-    transform: translateY(0) rotate(-45deg) scale(0.5);
+    transform: translateY(0) rotate(-45deg) scale(0.5) translateX(0);
     opacity: 0.6;
   }
 
   100% {
-    transform: translateY(-120vh) rotate(-45deg) scale(2.4);
+    transform: translateY(-120vh) rotate(-45deg) scale(2.4) translateX(var(--random-right));
     opacity: 0.2;
   }
 }

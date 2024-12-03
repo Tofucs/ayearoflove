@@ -1,68 +1,45 @@
-// src/PictureGroup.tsx
-import React, { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Group } from './types';
 
 interface PictureGroupProps {
   group: Group;
   progress: number;
   isFront: boolean;
-  direction: 'up' | 'down' | null
+  direction: 'up' | 'down' | null;
+  cursorPos: { x: number; y: number };
 }
 
-const PictureGroup: React.FC<PictureGroupProps> = ({ group, progress, isFront, direction }) => {
-
+const PictureGroup: React.FC<PictureGroupProps> = ({ group, progress, isFront, direction, cursorPos }) => {
   const [showCaptions, setShowCaptions] = useState<boolean>(false);
-  const snappedOpacity = Math.abs(progress) < 0.1 ? 1 : 1 - Math.abs(progress);
+
+  const snappedOpacity = Math.abs(progress) < 0.1 ? 1
+    : Math.abs(progress) > 0.6
+      ? 0
+      : 1 - Math.abs(progress);
+  console.log("progress:" + progress);
   const scale =
-    direction === 'down'
-      ? 1 + Math.abs(progress) * 0.2 // Zoom out toward the viewer
-      : 1 - Math.abs(progress) * 0.2; // Zoom out away from the viewer
-  const variants = {
-    enter: (direction: 'up' | 'down') => ({
-      scale: 0.8, // Start smaller for zoom-in effect
-      rotateX: direction === 'up' ? 90 : -90, // Flip in from the top or bottom
-      opacity: 0,
-    }),
-    center: {
-      scale: 1, // Normal size
-      rotateX: 0, // Fully visible
-      opacity: 1,
-    },
-    exit: (direction: 'up' | 'down') => ({
-      scale: 0.8, // Shrink for zoom-out effect
-      rotateX: direction === 'up' ? -90 : 90, // Flip out to the bottom or top
-      opacity: 0,
-    }),
-  };
-
-  const groupVariants: Variants = {
-    initial: { opacity: 0, scale: 0.8, rotateX: -90 },
-    animate: { opacity: 1, scale: 1, rotateX: 0 },
-    exit: { opacity: 0, scale: 0.8, rotateX: 90 },
-  };
-
-  const captionVariants = {
-    hidden: { opacity: 0, y: 20 }, // Start slightly below and hidden
-    visible: { opacity: 1, y: 0 }, // Fully visible in place
-    exit: { opacity: 0, y: 20 }, // Slide down and fade out
-  };
+    progress > 0
+      ? 1 + progress * 1.5 // Shrinks as it moves away
+      : 1 + Math.abs(progress) * -0.3; // Grows larger as it comes closer
+  const translateX = progress * 0;
+  const rotateY = 0; // Skew for perspective
 
   const handleLabelClick = () => {
     setShowCaptions((prev) => !prev);
   };
-
-
 
   return (
     <motion.div
       className={`picture-group ${isFront ? 'is-front' : ''}`}
       style={{
         transform: `
-        scale(${scale}) 
-        rotateX(${progress * 45}deg)
-      `, // Smooth scale and rotation
-        opacity: snappedOpacity, // Fade out as progress moves
+          perspective(1000px)
+          scale(${scale})
+          translateX(${translateX}px)
+          rotateY(${rotateY}deg)
+        `,
+        opacity: snappedOpacity,
         pointerEvents: isFront ? 'auto' : 'none',
       }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -72,26 +49,80 @@ const PictureGroup: React.FC<PictureGroupProps> = ({ group, progress, isFront, d
       </h2>
 
       <div className="pictures">
-        {group.pictures.map((picture, index) => (
-          <div className="picture-container" key={index}>
-            <img src={picture.src} alt={picture.caption} />
-            <AnimatePresence>
-              {showCaptions && (
-                <motion.p
-                  className="caption"
-                  variants={captionVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                >
-                  {picture.caption}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
-        ))}
+        {group.pictures.map((picture, index) => {
+          return (
+            <ShyPicture
+              key={index}
+              src={picture.src}
+              caption={picture.caption}
+              cursorPos={cursorPos}
+              showCaptions={showCaptions}
+              isFront={isFront}
+            />
+          );
+        })}
       </div>
+    </motion.div>
+  );
+};
+
+interface ShyPictureProps {
+  src: string;
+  caption: string;
+  cursorPos: { x: number; y: number };
+  showCaptions: boolean;
+  isFront: boolean;
+}
+
+const ShyPicture: React.FC<ShyPictureProps> = ({ src, caption, cursorPos, showCaptions, isFront }) => {
+  const pictureRef = useRef<HTMLDivElement>(null);
+
+  const calculateDisplacement = () => {
+    if (!pictureRef.current || !isFront) return { x: 0, y: 0 };
+
+    const rect = pictureRef.current.getBoundingClientRect();
+    const pictureCenterX = rect.left + rect.width / 2;
+    const pictureCenterY = rect.top + rect.height / 2;
+
+    const distanceX = cursorPos.x - pictureCenterX;
+    const distanceY = cursorPos.y - pictureCenterY;
+
+    return {
+      x: Math.min(10, -distanceX * 0.05), // Limit the displacement
+      y: Math.min(10, -distanceY * 0.05),
+    };
+  };
+
+  const displacement = calculateDisplacement();
+
+  return (
+    <motion.div
+      ref={pictureRef}
+      className="picture-container"
+      animate={{
+        x: displacement.x,
+        y: displacement.y,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 150,
+        damping: 15,
+      }}
+    >
+      <img src={src} alt={caption} />
+      <AnimatePresence>
+        {showCaptions && (
+          <motion.p
+            className="caption"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            {caption}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

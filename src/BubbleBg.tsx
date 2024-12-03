@@ -13,18 +13,20 @@ const HeartBackground: React.FC = () => {
       if (heartCount.current > maxHearts) return
       const heart = document.createElement('div');
       heart.classList.add('heart');
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDuration = `${3 + Math.random() * 5}s`;
+      heart.style.left = `${Math.random() * 40}vw`;
+      heart.style.animationDuration = `${8 + Math.random() * 5}s`;
+      heart.style.setProperty('--random-right', `${Math.random() * 60 + 0}vw`);
       heartContainer?.appendChild(heart);
 
       heartCount.current += 1;
       // Remove the heart after the animation ends
       heart.addEventListener('animationend', () => {
         heart.remove();
+        heartCount.current -= 1;
       });
     }
 
-    const interval = setInterval(createHeart, 600);
+    const interval = setInterval(createHeart, 800);
 
     return () => {
       clearInterval(interval);
