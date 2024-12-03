@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Gallery from './Gallery';
 import HeartBackground from './BubbleBg';
-import LightEffect from './Light';
 import "./index.css"
 
 const App: React.FC = () => {

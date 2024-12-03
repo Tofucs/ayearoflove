@@ -10,7 +10,7 @@ interface PictureGroupProps {
   cursorPos: { x: number; y: number };
 }
 
-const PictureGroup: React.FC<PictureGroupProps> = ({ group, progress, isFront, direction, cursorPos }) => {
+const PictureGroup: React.FC<PictureGroupProps> = ({ group, progress, isFront, cursorPos }) => {
   const [showCaptions, setShowCaptions] = useState<boolean>(false);
 
   const snappedOpacity = Math.abs(progress) < 0.1 ? 1

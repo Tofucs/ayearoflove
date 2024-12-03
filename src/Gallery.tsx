@@ -1,6 +1,6 @@
 // src/Gallery.tsx
 import React, { useState, WheelEvent, useEffect } from 'react';
-import { AnimatePresence, transform } from 'framer-motion';
+// import { AnimatePresence, transform } from 'framer-motion';
 import { motion } from 'framer-motion';
 import PictureGroup from './PictureGroup.tsx';
 import { Group } from './types';
@@ -8,7 +8,7 @@ import './styles.css'
 
 const Gallery: React.FC = () => {
   const [groups, setGroups] = useState<Group[]>([]);
-  const [currentGroupIndex, setCurrentGroupIndex] = useState<number>(0);
+  // const [currentGroupIndex, setCurrentGroupIndex] = useState<number>(0);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -146,14 +146,6 @@ const Gallery: React.FC = () => {
     ];
     setGroups(staticGroups); // Use static data lol aint doing fetching shit
   }, []);
-
-  const nextGroup = () => {
-    setCurrentGroupIndex((prevIndex) => (prevIndex + 1) % groups.length);
-  };
-
-  const prevGroup = () => {
-    setCurrentGroupIndex((prevIndex) => (prevIndex - 1 + groups.length) % groups.length);
-  }
   const progressPercentage = Math.min(
     Math.max((scrollProgress / (groups.length - 1)) * 100, 0),
     100
